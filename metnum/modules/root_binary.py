@@ -29,10 +29,6 @@ Arguments:
     relative_error : Optional. Relative error.
 """
 
-    @staticmethod
-    def default_error():
-        return 0.000001
-
     def execute(self):
         self._performance['loop'] = 1
         old_x_mid = None

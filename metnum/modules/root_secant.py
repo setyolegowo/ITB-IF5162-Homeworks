@@ -8,51 +8,40 @@ from metnum.helpers.run_function import run_function
 
 LOOP_LIMIT = 1000000
 
-class RegulaFasi(Common):
+class RootSecant(Common):
     def __init__(self, argv):
         if len(argv) < 3:
-            raise Exception('Lack of argument to run root finding with Regula-Fasi method')
+            raise Exception('Lack of argument to run root finding with secant method')
         self.function = argv[0]
-        self.x_low = float(argv[1])
-        self.x_high = float(argv[2])
-        self.relative_error = float(argv[3]) if len(
-            argv) > 3 else RegulaFasi.default_error()
+        self.x_0 = float(argv[1])
+        self.x_1 = float(argv[2])
+        self.relative_error = float(argv[3]) if len(argv) > 3 else RootSecant.default_error()
         self._performance = {}
 
     @staticmethod
     def help():
-        return """math_function x_low x_high [relative_error]
+        return """math_function x_0 x_1 [relative_error]
 
 Arguments:
     math_function  : Math function in string with format python
-    x_low          : Lowest range value
-    x_high         : Highet range value
+    x_0            : Lowest range value
+    x_1            : Highet range value
     relative_error : Optional. Relative error.
 """
 
     def execute(self):
         self._performance['loop'] = 1
-        old_x_mid = None
-        x_low = self.x_low
-        x_high = self.x_high
+        x_before = self.x_0
+        x_now = self.x_1
 
         while self._performance['loop'] < LOOP_LIMIT:
-            x_mid = self.new_x_mid(x_low, x_high)
-            test_val = self.run_function(x_low) * self.run_function(x_mid)
+            x_next = self.new_x_mid(x_now, x_before)
 
-            # Test
-            if test_val < 0:
-                x_high = x_mid
-            elif test_val > 0:
-                x_low = x_mid
-            else:
-                return x_mid
+            if abs((x_next - x_now)/x_next) <= self.relative_error:
+                return x_next
 
-            if old_x_mid is not None:
-                if abs((x_mid - old_x_mid)/x_mid) <= self.relative_error:
-                    return x_mid
-
-            old_x_mid = x_mid
+            x_before = x_now
+            x_now = x_next
             self._performance['loop'] += 1
 
         raise Exception('Loop forever?')

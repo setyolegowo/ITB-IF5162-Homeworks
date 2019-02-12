@@ -13,3 +13,7 @@ class Common():
         """
         """
         raise Exception('Print performance function is not implemented yet')
+
+    @staticmethod
+    def default_error():
+        return 0.000001
