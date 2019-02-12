@@ -3,7 +3,7 @@
 from __future__ import print_function
 import sys
 
-from modules import root_binary, root_regula, root_secant, root_fixed_point
+from modules import root_binary, root_regula, root_secant, root_fixed_point, root_newton_rhapson
 
 class Metnum():
     def __init__(self, argv):
@@ -30,6 +30,7 @@ Available modes:
     root_regula                 : Finding root value using Regula-Falsi method
     root_secant                 : Finding root value using Secant method
     root_fixed_point            : Finding root value using Fixed Point method
+    root_newton_rhapson         : Finding root value using Newton Rhapson method
 """
 
 
@@ -57,5 +58,6 @@ Available modes:
             'root_bisection': root_binary.RootBinary,
             'root_regula': root_regula.RegulaFasi,
             'root_secant': root_secant.RootSecant,
-            'root_fixed_point': root_fixed_point.RootFixedPoint
+            'root_fixed_point': root_fixed_point.RootFixedPoint,
+            'root_newton_rhapson': root_newton_rhapson.RootNewtonRhapson
         }
