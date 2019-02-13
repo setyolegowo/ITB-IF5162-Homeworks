@@ -3,7 +3,7 @@
 from __future__ import print_function
 import sys
 
-from modules import root_binary, root_regula, root_secant, root_fixed_point, root_newton_rhapson
+from modules import root_binary, root_regula, root_secant, root_fixed_point, root_newton_raphson
 
 class Metnum():
     def __init__(self, argv):
@@ -59,5 +59,5 @@ Available modes:
             'root_regula': root_regula.RegulaFasi,
             'root_secant': root_secant.RootSecant,
             'root_fixed_point': root_fixed_point.RootFixedPoint,
-            'root_newton_rhapson': root_newton_rhapson.RootNewtonRhapson
+            'root_newton_rhapson': root_newton_raphson.RootNewtonRaphson
         }

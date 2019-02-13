@@ -8,16 +8,16 @@ from metnum.helpers.run_function import run_function
 
 LOOP_LIMIT = 1000000
 
-class RootNewtonRhapson(Common):
+class RootNewtonRaphson(Common):
     def __init__(self, argv):
         if len(argv) < 3:
             raise Exception(
-                'Lack of argument to run root finding with Fixed Point Iteration method')
+                'Lack of argument to run root finding with Newton Raphson iteration method')
         self.function = argv[0]
         self.g_function = argv[1]
         self.first_x = float(argv[2])
         self.relative_error = float(argv[3]) if len(
-            argv) > 3 else RootNewtonRhapson.default_error()
+            argv) > 3 else RootNewtonRaphson.default_error()
         self._performance = {}
 
     @staticmethod

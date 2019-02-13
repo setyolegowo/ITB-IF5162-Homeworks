@@ -41,8 +41,6 @@ Arguments:
             if abs(testval) < self.relative_error:
                 return new_x
 
-            print str(x_current) + ' => ' + str(new_x) + ' : ' + str(abs(testval))
-            time.sleep(1)
             x_current = new_x
             self._performance['loop'] += 1
 
