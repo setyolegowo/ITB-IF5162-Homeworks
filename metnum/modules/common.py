@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-class Common():
+class Common(object):
     """
     """
 

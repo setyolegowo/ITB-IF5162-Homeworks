@@ -93,3 +93,72 @@ python handler.py
       Total loop: 6
 
   ```
+
+- Example find linear interpolation function
+  ```
+  $ python handler.py interpolation_linear 0,0,1.0 1.0,3.0
+  Generated function: y = 1.0 + 2.0*x
+  ```
+
+- Example find result of linear interpolation function
+  ```
+  $ python handler.py interpolation_linear_calc 4.0 0,0,1.0 1.0,3.0
+  Generated function: y = 1.0 + 2.0*x
+  Result is found: 9.0
+  ```
+
+- Example find lagrange interpolation function
+  ```
+  $ python handler.py interpolation_lagrange 0.0,1.0 0.4,0.921061 0.8,0.696707 1.2,0.362358
+  Generated function: y = (-2.60416666667*(x - 0.4)*(x - 0.8)*(x - 1.2)) + (7.1957890625*(x - 0.0)*(x - 0.8)*(x - 1.2)) + (-5.4430234375*(x - 0.0)*(x - 0.4)*(x - 1.2)) + (0.943640625*(x - 0.0)*(x - 0.4)*(x - 0.8))
+  ```
+
+- Example find result of lagrange interpolation function
+  ```
+  $ python handler.py interpolation_lagrange_calc 0.5 0.0,1.0 0.4,0.921061 0.8,0.696707 1.2,0.362358
+  Generated function: y = (-2.60416666667*(x - 0.4)*(x - 0.8)*(x - 1.2)) + (7.1957890625*(x - 0.0)*(x - 0.8)*(x - 1.2)) + (-5.4430234375*(x - 0.0)*(x - 0.4)*(x - 1.2)) + (0.943640625*(x - 0.0)*(x - 0.4)*(x - 0.8))
+  Result is found: 0.8772215625
+  ```
+
+- Example find newton interpolation function
+  ```
+  $ python handler.py interpolation_newton 8.0,2.079442 9.0,2.197225 9.5,2.251292 11.0,2.397895
+  Generated function: y = (2.079442) + (0.117783*(x - 8.0)) + (-0.00643266666667*(x - 8.0)*(x - 9.0)) + (0.000411111111111*(x - 8.0)*(x - 9.0)*(x - 9.5))
+  ```
+
+- Example find result of newton interpolation function
+  ```
+  $ python handler.py interpolation_newton 8.0,2.079442 9.0,2.197225 9.5,2.251292 11.0,2.397895
+  Generated function: y = (2.079442) + (0.117783*(x - 8.0)) + (-0.00643266666667*(x - 8.0)*(x - 9.0)) + (0.000411111111111*(x - 8.0)*(x - 9.0)*(x - 9.5))
+  Result is found: 2.21920816
+  ```
+
+- Example find result of integral with square strip
+  ```
+  $ python handler.py integral_square_strip "x**2 + x" 0 2.0 1000
+  Result is found: 4.654687992
+  ```
+
+- Example find result of integral with trapezium strip
+  ```
+  $ python handler.py integral_trapezium_strip "x**2 + x" 0 2.0 1000
+  Result is found: 4.654687992
+  ```
+
+- Example find result of integral with midpoint strip
+  ```
+  $ python handler.py integral_midpoint_strip "x**2 + x" 0 2.0 1000
+  Result is found: 4.654675998
+  ```
+
+- Example find result of integral with simpson 1/3
+  ```
+  $ python handler.py integral_simpson_1_3 "x**2 + x" 0 2.0 1000
+  Result is found: 4.642719968
+  ```
+
+- Example find result of integral with simpson 3/8
+  ```
+  $ python handler.py integral_simpson_3_8 "x**2 + x" 0 2.0 1000
+  Result is found: 4.654684161
+  ```
